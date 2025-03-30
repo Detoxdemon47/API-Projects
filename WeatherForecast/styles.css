@@ -331,6 +331,9 @@ p.air-index{
     .weather-data .weather-right .highlight .sunrise-sunset{
         grid-template-columns: 1fr;
     }
+    .header{
+        position: relative;
+    }
 }
 
 @media(max-width: 450px){

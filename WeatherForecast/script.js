@@ -23,7 +23,7 @@ function getWeatherDetails(name, lat, lon, country, state){
 
     let WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api_Key}`;
 
-    let AIR_POLUTION_API_URL = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${api_Key}`;
+    let AIR_POLUTION_API_URL = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${api_Key}`;
 
     let days = [
         'Sunday',
@@ -52,7 +52,6 @@ function getWeatherDetails(name, lat, lon, country, state){
 
     // Weather Api
     fetch(WEATHER_API_URL).then(res => res.json()).then(data => {
-        console.log(data);
         let date = new Date();
         currentWeatherCard.innerHTML = `
         <div class="current-weather">
@@ -285,7 +284,7 @@ function getCityCoordinates(){
     cityInput.value = '';
 
     if(!cityName) return;
-    let GEOCODING_API_URL = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${api_Key}`;
+    let GEOCODING_API_URL = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${api_Key}`;
 
     fetch(GEOCODING_API_URL).then(res => res.json()).then(data => {
         let {name, lat, lon, country, state} = data[0];
@@ -298,7 +297,7 @@ function getCityCoordinates(){
 function getUserCoordinates(){
     navigator.geolocation.getCurrentPosition(position => {
         let {latitude, longitude} = position.coords;
-        let REVERSE_GEOCODING_API_URL = `http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${api_Key}`;
+        let REVERSE_GEOCODING_API_URL = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${api_Key}`;
 
         fetch(REVERSE_GEOCODING_API_URL).then(res => res.json()).then(data => {
             let {name, country, state} = data[0];
